@@ -22,12 +22,14 @@ public class DialogController {
     @FXML
     private DatePicker deadLinePicker;
 
-    public void processResult() {
+    public TodoItem processResult() {
         String shortDescription = shortDescriptionField.getText().trim();
         String details = detailsArea.getText().trim();
         LocalDate deadLineValue = deadLinePicker.getValue();
 
-        TodoData.getInstance().addTodoItem(new TodoItem(shortDescription, details, deadLineValue));
+        TodoItem newItem = new TodoItem(shortDescription, details, deadLineValue);
+        TodoData.getInstance().addTodoItem(newItem);
+        return newItem;
     }
 
 }
